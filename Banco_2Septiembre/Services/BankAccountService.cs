@@ -5,10 +5,10 @@ using System.Text;
 
 namespace Banco_2Septiembre.Servicios {
     class BankAccountService {
-        void ReduceBalance(BankAccount BA, int quantity) {
+        public static void ReduceBalance(BankAccount BA, int quantity) {
             BA.Balance -= quantity;
         }
-        void IncreseBalance(BankAccount BA, int quantity) {
+        public static void IncreseBalance(BankAccount BA, int quantity) {
             BA.Balance += quantity;
         }
     }

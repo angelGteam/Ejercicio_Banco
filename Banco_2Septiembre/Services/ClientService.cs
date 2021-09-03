@@ -7,14 +7,16 @@ using System.Text;
 
 namespace Banco_2Septiembre.Servicios {
     class ClientService : User {
-        public bool Loan() {
-            throw new NotImplementedException();
+        public void Loan(Client client) {
+          
         }
 
-        public bool Login() {
-            throw new NotImplementedException();
+        public static void Login(Client client) {
+            if(EmailService.CheckPassword())
+            {
+                Console.WriteLine("Logueado el usuario: " + client.UserID);
+            }
         }
-
         public static void Register(Client client) {
             Console.WriteLine("Se ha registrado el usuario: " + client.Name + ", con el IDUsuario" + client.UserID + ", y la contraseña: " + client.Password + ".");
             if(EmailService.CheckPassword()) {
@@ -22,16 +24,13 @@ namespace Banco_2Septiembre.Servicios {
             }           
         }
 
-        public void Register() {
-            throw new NotImplementedException();
+        public void Transference(Client user1, Client user2, int cantidad) {
+            BankAccountService.ReduceBalance(user1.BankAccount, cantidad);
+            BankAccountService.IncreseBalance(user2.BankAccount, cantidad);
+            SMSResponseService.SendMessage(100, user1.SMSResponse, user2.SMSResponse);
         }
-
-        public void Register(User user) {
-            throw new NotImplementedException();
-        }
-
-        public void Transference() {
-            throw new NotImplementedException();
+        public static Boolean CheckPermissions(User user) {
+            return true;
         }
     }
 }
