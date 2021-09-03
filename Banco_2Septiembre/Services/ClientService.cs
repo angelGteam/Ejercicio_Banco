@@ -8,7 +8,7 @@ using System.Text;
 namespace Banco_2Septiembre.Servicios {
     class ClientService : User {
         public void Loan(Client client) {
-          
+        //queda por hacer
         }
 
         public static void Login(Client client) {
@@ -27,7 +27,7 @@ namespace Banco_2Septiembre.Servicios {
         public void Transference(Client user1, Client user2, int cantidad) {
             BankAccountService.ReduceBalance(user1.BankAccount, cantidad);
             BankAccountService.IncreseBalance(user2.BankAccount, cantidad);
-            SMSResponseService.SendMessage(100, user1.SMSResponse, user2.SMSResponse);
+            SMSResponseService.SendMessage(100, user1.PhoneNumber, user2.PhoneNumber);
         }
         public static Boolean CheckPermissions(User user) {
             return true;

@@ -9,18 +9,18 @@ namespace Banco_2Septiembre.Modelo {
         public String Name { get => Name; set => Name = value; }
         public String Password { get => Password; set => Password = value; }
         public Email Mail { get => Mail; set => Mail = value; }
-        public SMSResponse SMSResponse { get => SMSResponse; set => SMSResponse = value; }
+        public int PhoneNumber { get => PhoneNumber; set => PhoneNumber = value; }
         public BankAccount BankAccount { get => BankAccount; set => BankAccount = value; }
-        public int Permisos { get => Permisos; set => Permisos = value; }
+        public int permission { get => permission; set => permission = value; }
 
-        public Client(string userID, string name, string password, Email mail, SMSResponse sMSResponse, BankAccount bankAccount) {
+        public Client(string userID, string name, string password, Email mail, int phoneNumber, BankAccount bankAccount) {
             UserID = userID;
             Name = name;
             Password = password;
             Mail = mail;
-            SMSResponse = sMSResponse;
+            PhoneNumber = phoneNumber;
             BankAccount = bankAccount;
-            Permisos = 0;
+            permission = 0;
         }
 
     }
