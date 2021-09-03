@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Banco_2Septiembre.Modelo {
-    class Client  {
-        public String UserID { get => UserID; set => UserID = value; }
-        public String Name { get => Name; set => Name = value; }
-        public String Password { get => Password; set => Password = value; }
+    class Client {
+        public string UserID { get => UserID; set => UserID = value; }
+        public string Name { get => Name; set => Name = value; }
+        public string Password { get => Password; set => Password = value; }
         public Email Mail { get => Mail; set => Mail = value; }
         public int PhoneNumber { get => PhoneNumber; set => PhoneNumber = value; }
         public BankAccount BankAccount { get => BankAccount; set => BankAccount = value; }

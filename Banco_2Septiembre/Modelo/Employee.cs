@@ -5,13 +5,13 @@ using System.Text;
 
 namespace Banco_2Septiembre.Modelo {
     class Employee {
-        public String UserID { get => UserID; set => UserID = value; }
-        public String Name { get => Name; set => Name = value; }
-        public String Password { get => Password; set => Password = value; }
+        public string UserID { get => UserID; set => UserID = value; }
+        public string Name { get => Name; set => Name = value; }
+        public string Password { get => Password; set => Password = value; }
         public Email Mail { get => Mail; set => Mail = value; }
         public int PhoneNumber { get => PhoneNumber; set => PhoneNumber = value; }
         public BankAccount BankAccount { get => BankAccount; set => BankAccount = value; }
-        public int Permissions { get => Permissions; set => Permissions = value; }
+        public int Permission { get => Permission; set => Permission = value; }
 
         public Employee(string userID, string name, string password, Email mail, int phoneNumber, BankAccount bankAccount) {
             UserID = userID;
@@ -20,7 +20,7 @@ namespace Banco_2Septiembre.Modelo {
             Mail = mail;
             PhoneNumber = phoneNumber;
             BankAccount = bankAccount;
-            Permissions = 1;
+            Permission = 1;
         }
     }
 }
