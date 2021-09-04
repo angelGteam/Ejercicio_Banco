@@ -8,21 +8,17 @@ using System.Text;
 namespace Banco_2Septiembre.Servicios {
     class EmployeeService {
         /// <summary>
-        /// queda por hacer el prestamo
+        /// un empleado hace un prestamo para un usuario, ya sea otro empleado, o un cliente
         /// </summary>
-        /// <param name="client"></param>
-        public static void Loan(Employee employee, int Quantity, Client client) {            
-            Console.WriteLine("El cliente con el ID: {0}, va a realizar un prestamo por el valor de: {1}, con un interés del: {2} %", client.UserID, Quantity, CalculateInterest(Quantity));
+        /// <param name="employee"></param>
+        /// <param name="Quantity"></param>
+        /// <param name="user"></param>
+        public static void Loan(Employee employee, int Quantity, User user) {
+            BankAccountService bankAccountService = new BankAccountService();
+            user.BankAccount.Balance = bankAccountService.IncreaseBalance(user.BankAccount, Quantity);
+            Console.WriteLine("El cliente con el ID: {0}, va a realizar un prestamo por el valor de: {1}, con un interés del: {2} %", user.UserID, Quantity, CalculateInterest(Quantity));
         }
-        /// <summary>
-        /// Iniciar la sesion de un usuario ya creado (extra que no pedido que prefiero no borrar para cambios futuros)
-        /// </summary>
-        /// <param name="Employee"></param>
-        public static void Login(Employee Employee) {
-            if(EmailResponseService.CheckPassword()) {
-                Console.WriteLine("Logueado el usuario: " + Employee.UserID);
-            }
-        }
+        
         /// <summary>
         /// Registra el usuario
         /// </summary>

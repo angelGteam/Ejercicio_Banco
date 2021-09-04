@@ -27,7 +27,10 @@ namespace Banco_2Septiembre {
             ClientService.Transference(client1, employee1, 100, smsResponseService);
             EmployeeService.Transference(employee1, employee2, 100, smsResponseService);
             if(EmployeeService.CheckPermissions(employee1)) {
-                EmployeeService.Loan(employee2, 101, client2);
+                Console.WriteLine("Escriba la cantidad de dinero que desea ");
+                string instruction = Console.ReadLine();
+                int result = Int32.Parse(instruction);
+                EmployeeService.Loan(employee2, result, client2);
             }
         }
     }
