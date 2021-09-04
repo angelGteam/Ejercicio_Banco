@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Banco_2Septiembre.Servicios {
-    class EmployeeService : IUserable {
+    class EmployeeService {
         /// <summary>
         /// queda por hacer el prestamo
         /// </summary>
@@ -27,11 +27,11 @@ namespace Banco_2Septiembre.Servicios {
         /// Registra el usuario
         /// </summary>
         /// <param name="Employee"></param>
-        public static void Register(Employee Employee) {
+        public static void Register(Employee Employee, EmailResponseService emailResponseService) {
             Console.WriteLine("Se ha registrado el usuario: " + Employee.Name + ", con el IDUsuario" + Employee.UserID + ", y la contraseña: " + Employee.Password + ".");
             if(EmailResponseService.CheckPassword())
             {
-                EmailResponseService.SendMessage(Employee.Mail);
+                emailResponseService.SendMessage(Employee.Mail);
             }
         }
         /// <summary>
@@ -40,10 +40,10 @@ namespace Banco_2Septiembre.Servicios {
         /// <param name="Employee1"></param>
         /// <param name="Employee2"></param>
         /// <param name="Quantity"></param>
-        public void Transference(Employee Employee1, Employee Employee2, int Quantity) {
+        public void Transference(Employee Employee1, Employee Employee2, int Quantity, SMSResponseService smsResponseService) {
             BankAccountService.ReduceBalance(Employee1.BankAccount, Quantity);
             BankAccountService.IncreseBalance(Employee2.BankAccount, Quantity);
-            SMSResponseService.SendMessage(100, Employee1.PhoneNumber, Employee2.PhoneNumber);
+            smsResponseService.SendMessage(100, Employee1.PhoneNumber, Employee2.PhoneNumber);
         }
         /// <summary>
         /// Comprueba los persmisos asignados al cliente

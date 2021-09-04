@@ -6,12 +6,15 @@ using System.Text;
 
 namespace Banco_2Septiembre.Services {
     class EmailResponseService : ISendable {
+        public EmailResponseService() {
+        }
+
         /// <summary>
         /// Envia un correo al email tras completar el registro
         /// </summary>
         /// <param name="email"></param>
-        public static void SendMessage(Email email) {
-            Console.WriteLine("Se ha enviado el correo a: " + email.Mail + " satisfactoriamente.");
+        public void SendMessage(Email email) {
+            Console.WriteLine(GetMessage());
         }
         /// <summary>
         /// Comprueba que la contrasegna sea correcta
@@ -19,6 +22,10 @@ namespace Banco_2Septiembre.Services {
         /// <returns></returns>
         public static Boolean CheckPassword() {
             return true;
+        }
+
+        public string GetMessage() {
+            return "Se ha enviado el correo satisfactoriamente.";
         }
     }
 }

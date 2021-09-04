@@ -4,15 +4,9 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Banco_2Septiembre.Modelo {
-    class Employee {
-        public string UserID;
-        public string Name;
-        public string Password;
-        public Email Mail;
-        public int PhoneNumber;
-        public BankAccount BankAccount;
+    class Employee : User{
         public int Permission;
-
+        // en caso de que User tuviese un constructor, usariamos :base(param)
         public Employee(string userID, string name, string password, Email mail, int phoneNumber, BankAccount bankAccount) {
             UserID = userID;
             Name = name;

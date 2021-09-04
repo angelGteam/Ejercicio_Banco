@@ -6,19 +6,19 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Banco_2Septiembre.Servicios {
-    class ClientService : IUserable {
+    class ClientService : User {
         /// <summary>
         /// queda por hacer el prestamo
         /// </summary>
         /// <param name="userable"></param>
-        public void Loan(IUserable userable) {
+        public void Loan(User userable) {
         
         }
         /// <summary>
         /// Iniciar la sesion de un usuario ya creado (extra que no pedido que prefiero no borrar para cambios futuros)
         /// </summary>
         /// <param name="userable"></param>
-        public static void Login(IUserable userable) {
+        public static void Login(Client userable) {
             if(EmailResponseService.CheckPassword())
             {
                 Console.WriteLine("Logueado el usuario: " + userable.UserID);
@@ -28,11 +28,11 @@ namespace Banco_2Septiembre.Servicios {
         /// <summary>
         /// Registra el usuario
         /// </summary>
-        /// <param name="userable"></param>
-        public static void Register(IUserable userable) {
-            Console.WriteLine("Se ha registrado el usuario: " + userable.Name + ", con el IDUsuario" + userable.UserID + ", y la contraseña: " + userable.Password + ".");
+        /// <param name="user"></param>
+        public static void Register(User user, EmailResponseService emailResponseService) {
+            Console.WriteLine("Se ha registrado el usuario: " + user.Name + ", con el IDUsuario" + user.UserID + ", y la contraseña: " + user.Password + ".");
             if(EmailResponseService.CheckPassword()) {
-                EmailResponseService.SendMessage(userable.Mail);
+                emailResponseService.SendMessage(user.Mail);
             }           
         }
         /// <summary>
@@ -41,20 +41,20 @@ namespace Banco_2Septiembre.Servicios {
         /// <param name="userable1"></param>
         /// <param name="userable2"></param>
         /// <param name="quantity"></param>
-        public static void Transference(IUserable userable1, IUserable userable2, int quantity) {
+        public static void Transference(User userable1, User userable2, int quantity, SMSResponseService smsResponseService) {
             BankAccountService.ReduceBalance(userable1.BankAccount, quantity);
             BankAccountService.IncreseBalance(userable1.BankAccount, quantity);
-            SMSResponseService.SendMessage(quantity, userable1.PhoneNumber, userable2.PhoneNumber);
+            smsResponseService.SendMessage(quantity, userable1.PhoneNumber, userable2.PhoneNumber);
         }
         /// <summary>
         /// Comprueba los persmisos asignados al cliente
         /// </summary>
-        /// <param name="userable"></param>
+        /// <param name="user"></param>
         /// <returns></returns>
-        public static bool CheckPermissions(IUserable userable) {
-            if(userable.permission==1) {
+        public static bool CheckPermissions(User user) {
+            if(user.permission==1) {
                 return true;
-            } else if(userable.permission == 0) {
+            } else if(user.permission == 0) {
                 return false;
             } else {
                 return false; // Hacer excepcion de user no valido en su lugar
