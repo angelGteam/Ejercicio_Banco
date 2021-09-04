@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Banco_2Septiembre.Services {
-    class EmailService : ISendable {
+    class EmailResponseService : ISendable {
         /// <summary>
         /// Envia un correo al email tras completar el registro
         /// </summary>

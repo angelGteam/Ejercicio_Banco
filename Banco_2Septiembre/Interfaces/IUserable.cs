@@ -5,10 +5,18 @@ using System.Text;
 
 namespace Banco_2Septiembre.Interfaces {
     interface IUserable {
-        //void Loan(IUserable client);
-        //static void Login(IUserable client);
-        //static void Register(IUserable client);
-        //static void Transference(IUserable user1, IUserable user2, int quantity);
-        //public static bool CheckPermissions(IUserable client);
+        string UserID { get; }
+        string Name { get; }
+        string Password { get; }
+        Email Mail { get; }
+        int PhoneNumber { get; }
+        BankAccount BankAccount { get; }
+        int permission { get; }
+
+        void Loan(IUserable userable);
+        void Login(IUserable userable);
+        void Register(IUserable userable);
+        void Transference(IUserable userable1, IUserable userable2, int quantity);
+        bool CheckPermissions(IUserable userable);
     } 
 }

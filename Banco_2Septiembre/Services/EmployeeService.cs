@@ -19,7 +19,7 @@ namespace Banco_2Septiembre.Servicios {
         /// </summary>
         /// <param name="Employee"></param>
         public static void Login(Employee Employee) {
-            if(EmailService.CheckPassword()) {
+            if(EmailResponseService.CheckPassword()) {
                 Console.WriteLine("Logueado el usuario: " + Employee.UserID);
             }
         }
@@ -29,9 +29,9 @@ namespace Banco_2Septiembre.Servicios {
         /// <param name="Employee"></param>
         public static void Register(Employee Employee) {
             Console.WriteLine("Se ha registrado el usuario: " + Employee.Name + ", con el IDUsuario" + Employee.UserID + ", y la contraseña: " + Employee.Password + ".");
-            if(EmailService.CheckPassword())
+            if(EmailResponseService.CheckPassword())
             {
-                EmailService.SendMessage(Employee.Mail);
+                EmailResponseService.SendMessage(Employee.Mail);
             }
         }
         /// <summary>
