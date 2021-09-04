@@ -15,17 +15,6 @@ namespace Banco_2Septiembre.Servicios {
         
         }
         /// <summary>
-        /// Iniciar la sesion de un usuario ya creado (extra que no pedido que prefiero no borrar para cambios futuros)
-        /// </summary>
-        /// <param name="userable"></param>
-        public static void Login(Client userable) {
-            if(EmailResponseService.CheckPassword())
-            {
-                Console.WriteLine("Logueado el usuario: " + userable.UserID);
-            }
-        }
-        // TODO: 
-        /// <summary>
         /// Registra el usuario
         /// </summary>
         /// <param name="user"></param>
@@ -38,13 +27,14 @@ namespace Banco_2Septiembre.Servicios {
         /// <summary>
         /// Realiza una transferencia, de un usuario A, a un usuario B
         /// </summary>
-        /// <param name="userable1"></param>
-        /// <param name="userable2"></param>
-        /// <param name="quantity"></param>
-        public static void Transference(User userable1, User userable2, int quantity, SMSResponseService smsResponseService) {
-            BankAccountService.ReduceBalance(userable1.BankAccount, quantity);
-            BankAccountService.IncreseBalance(userable1.BankAccount, quantity);
-            smsResponseService.SendMessage(quantity, userable1.PhoneNumber, userable2.PhoneNumber);
+        /// <param name="User1"></param>
+        /// <param name="User2"></param>
+        /// <param name="Quantity"></param>
+        public static void Transference(User User1, User User2, int Quantity, SMSResponseService smsResponseService) {
+            BankAccountService bankAccountService = new BankAccountService();
+            User1.BankAccount.Balance = bankAccountService.ReduceBalance(User1.BankAccount, Quantity);
+            User2.BankAccount.Balance = bankAccountService.IncreaseBalance(User2.BankAccount, Quantity);
+            smsResponseService.SendMessage(100, User1.BankAccount, User2.BankAccount);
         }
         /// <summary>
         /// Comprueba los persmisos asignados al cliente
@@ -58,8 +48,7 @@ namespace Banco_2Septiembre.Servicios {
                 return false;
             } else {
                 return false; // Hacer excepcion de user no valido en su lugar
-            }
-          
+            }          
         }
     }
 }

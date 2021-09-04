@@ -10,6 +10,7 @@ namespace Banco_2Septiembre.Modelo {
             this.IBAN = IBAN;
             Balance = balance;
         }
+
     }
    
 }

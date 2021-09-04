@@ -37,13 +37,14 @@ namespace Banco_2Septiembre.Servicios {
         /// <summary>
         /// Realiza una transferencia, de un usuario A, a un usuario B
         /// </summary>
-        /// <param name="Employee1"></param>
-        /// <param name="Employee2"></param>
+        /// <param name="User1"></param>
+        /// <param name="User2"></param>
         /// <param name="Quantity"></param>
-        public void Transference(Employee Employee1, Employee Employee2, int Quantity, SMSResponseService smsResponseService) {
-            BankAccountService.ReduceBalance(Employee1.BankAccount, Quantity);
-            BankAccountService.IncreseBalance(Employee2.BankAccount, Quantity);
-            smsResponseService.SendMessage(100, Employee1.PhoneNumber, Employee2.PhoneNumber);
+        public static void Transference(User User1, User User2, int Quantity, SMSResponseService smsResponseService) {
+            BankAccountService bankAccountService = new BankAccountService();
+            User1.BankAccount.Balance = bankAccountService.ReduceBalance(User1.BankAccount, Quantity);
+            User2.BankAccount.Balance = bankAccountService.IncreaseBalance(User2.BankAccount, Quantity);            
+            smsResponseService.SendMessage(100, User1.BankAccount, User2.BankAccount);
         }
         /// <summary>
         /// Comprueba los persmisos asignados al cliente
@@ -60,5 +61,6 @@ namespace Banco_2Septiembre.Servicios {
             }
 
         }
+
     }
 }

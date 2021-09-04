@@ -10,16 +10,18 @@ namespace Banco_2Septiembre.Servicios {
         /// </summary>
         /// <param name="BA"></param>
         /// <param name="quantity"></param>
-        public static void ReduceBalance(BankAccount BA, int quantity) {
+        public int ReduceBalance(BankAccount BA, int quantity) {
             BA.Balance -= quantity;
+            return BA.Balance;
         }
         /// <summary>
         /// Aumenta el saldo de la cuenta
         /// </summary>
         /// <param name="BA"></param>
         /// <param name="quantity"></param>
-        public static void IncreseBalance(BankAccount BA, int quantity) {
+        public int IncreaseBalance(BankAccount BA, int quantity)    {
             BA.Balance += quantity;
+            return BA.Balance;
         }
     }
 }
