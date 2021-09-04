@@ -11,8 +11,8 @@ namespace Banco_2Septiembre.Servicios {
         /// queda por hacer el prestamo
         /// </summary>
         /// <param name="client"></param>
-        public void Loan(Employee employee) {
-            
+        public static void Loan(Employee employee, int Quantity, Client client) {            
+            Console.WriteLine("El cliente con el ID: {0}, va a realizar un prestamo por el valor de: {1}, con un interés del: {2} %", client.UserID, Quantity, CalculateInterest(Quantity));
         }
         /// <summary>
         /// Iniciar la sesion de un usuario ya creado (extra que no pedido que prefiero no borrar para cambios futuros)
@@ -28,7 +28,7 @@ namespace Banco_2Septiembre.Servicios {
         /// </summary>
         /// <param name="Employee"></param>
         public static void Register(Employee Employee, EmailResponseService emailResponseService) {
-            Console.WriteLine("Se ha registrado el usuario: " + Employee.Name + ", con el IDUsuario" + Employee.UserID + ", y la contraseña: " + Employee.Password + ".");
+            Console.WriteLine("Se ha registrado el usuario: " + Employee.Name + ", con el IDUsuario: " + Employee.UserID + ", y la contraseña: " + Employee.Password + ".");
             if(EmailResponseService.CheckPassword())
             {
                 emailResponseService.SendMessage(Employee.Mail);
@@ -61,6 +61,20 @@ namespace Banco_2Septiembre.Servicios {
             }
 
         }
-
+        private static int CalculateInterest(int QuantityOfLoan) {
+            int ret;
+            if(QuantityOfLoan <= 100) {
+                ret = 5;
+            } else if(QuantityOfLoan > 100 && QuantityOfLoan <= 200) {
+                ret = 10;
+            } else if(QuantityOfLoan > 200 && QuantityOfLoan <= 300) {
+                ret = 15;
+            } else {
+                ret = 20;
+            }
+                
+            
+            return ret;
+        }
     }
 }

@@ -25,9 +25,9 @@ namespace Banco_2Septiembre {
             EmployeeService.Register(employee1, emailResponseService);
 
             ClientService.Transference(client1, employee1, 100, smsResponseService);
-
+            EmployeeService.Transference(employee1, employee2, 100, smsResponseService);
             if(EmployeeService.CheckPermissions(employee1)) {
-                EmployeeService.Transference(employee1, employee2, 100, smsResponseService);
+                EmployeeService.Loan(employee2, 101, client2);
             }
         }
     }

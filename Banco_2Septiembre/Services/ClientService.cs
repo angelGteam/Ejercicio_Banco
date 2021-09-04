@@ -8,18 +8,11 @@ using System.Text;
 namespace Banco_2Septiembre.Servicios {
     class ClientService : User {
         /// <summary>
-        /// queda por hacer el prestamo
-        /// </summary>
-        /// <param name="userable"></param>
-        public void Loan(User userable) {
-        
-        }
-        /// <summary>
         /// Registra el usuario
         /// </summary>
         /// <param name="user"></param>
         public static void Register(User user, EmailResponseService emailResponseService) {
-            Console.WriteLine("Se ha registrado el usuario: " + user.Name + ", con el IDUsuario" + user.UserID + ", y la contraseña: " + user.Password + ".");
+            Console.WriteLine("Se ha registrado el usuario: " + user.Name + ", con el IDUsuario: " + user.UserID + ", y la contraseña: " + user.Password + ".");
             if(EmailResponseService.CheckPassword()) {
                 emailResponseService.SendMessage(user.Mail);
             }           
