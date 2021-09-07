@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Banco_2Septiembre.Modelo {
     class Employee : User{
-        public int Permission;
-        // en caso de que User tuviese un constructor, usariamos :base(param)
+        #region "Constructor"
+        // En caso de que User tuviese un constructor, usariamos :base(param)
         public Employee(string userID, string name, string password, Email mail, int phoneNumber, BankAccount bankAccount) {
             UserID = userID;
             Name = name;
@@ -16,5 +16,6 @@ namespace Banco_2Septiembre.Modelo {
             BankAccount = bankAccount;
             Permission = 1;
         }
+        #endregion
     }
 }

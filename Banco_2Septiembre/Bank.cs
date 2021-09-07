@@ -12,7 +12,8 @@ namespace Banco_2Septiembre {
             BankAccount ClientBankAccount2 = new BankAccount(123456791, 1000);
             BankAccount EmployeeBankAccount1 = new BankAccount(123456790, 1000);
             BankAccount EmployeeBankAccount2 = new BankAccount(123456788, 1000);
-
+            ClientService clientService = new ClientService();
+            EmployeeService employeeService = new EmployeeService();
             Client client1 = new Client("Client1ID", "Angel Gomez", "Password123", ClientMail, 665665665, ClientBankAccount1);
             Client client2 = new Client("Client1ID", "Jorge Sancho", "Password123", ClientMail, 665665666, ClientBankAccount2);
             Employee employee1 = new Employee("Employee1ID", "Roberto Perez", "Password123", EmployeeMail, 556556557, EmployeeBankAccount1);
@@ -21,16 +22,16 @@ namespace Banco_2Septiembre {
             EmailResponseService emailResponseService = new EmailResponseService();
             SMSResponseService smsResponseService = new SMSResponseService();
             
-            ClientService.Register(client1, emailResponseService);
-            EmployeeService.Register(employee1, emailResponseService);
+            clientService.Register(client1, emailResponseService);
+            employeeService.Register(employee1, emailResponseService);
 
-            ClientService.Transference(client1, employee1, 100, smsResponseService);
-            EmployeeService.Transference(employee1, employee2, 100, smsResponseService);
-            if(EmployeeService.CheckPermissions(employee1)) {
+            clientService.Transference(client1, employee1, 100, smsResponseService);
+            employeeService.Transference(employee1, employee2, 100, smsResponseService);
+            if(employeeService.CheckPermissions(employee1)) {
                 Console.WriteLine("Escriba la cantidad de dinero que desea ");
                 string instruction = Console.ReadLine();
                 int result = Int32.Parse(instruction);
-                EmployeeService.Loan(employee2, result, client2);
+                employeeService.Loan(employee2, result, client2);
             }
         }
     }

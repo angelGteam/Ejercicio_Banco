@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Banco_2Septiembre.Services {
     class SMSResponseService : ISendable {
-
+        #region "Metodos"
         /// <summary>
         /// Envia el mensaje al numero del usuario, con la información de la transferencia
         /// </summary>
@@ -24,5 +24,6 @@ namespace Banco_2Septiembre.Services {
         public string GetMessage() {
             return "Se ha realizado la transferencia correctamente.";
         }
+        #endregion
     }
 }

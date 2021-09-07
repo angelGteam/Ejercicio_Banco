@@ -1,21 +1,23 @@
 ﻿using Banco_2Septiembre.Interfaces;
 using Banco_2Septiembre.Modelo;
 using Banco_2Septiembre.Services;
+using Banco_Ejercicio.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Banco_2Septiembre.Servicios {
-    class ClientService : User {
+    class ClientService : User, Iuserable {
+        #region "Metodos usuario basico"
         /// <summary>
         /// Registra el usuario
         /// </summary>
         /// <param name="user"></param>
-        public static void Register(User user, EmailResponseService emailResponseService) {
+        public void Register(User user, EmailResponseService emailResponseService) {
             Console.WriteLine("Se ha registrado el usuario: " + user.Name + ", con el IDUsuario: " + user.UserID + ", y la contraseña: " + user.Password + ".");
             if(EmailResponseService.CheckPassword()) {
                 emailResponseService.SendMessage(user.Mail);
-            }           
+            }
         }
         /// <summary>
         /// Realiza una transferencia, de un usuario A, a un usuario B
@@ -23,7 +25,7 @@ namespace Banco_2Septiembre.Servicios {
         /// <param name="User1"></param>
         /// <param name="User2"></param>
         /// <param name="Quantity"></param>
-        public static void Transference(User User1, User User2, int Quantity, SMSResponseService smsResponseService) {
+        public void Transference(User User1, User User2, int Quantity, SMSResponseService smsResponseService) {
             BankAccountService bankAccountService = new BankAccountService();
             User1.BankAccount.Balance = bankAccountService.ReduceBalance(User1.BankAccount, Quantity);
             User2.BankAccount.Balance = bankAccountService.IncreaseBalance(User2.BankAccount, Quantity);
@@ -34,14 +36,16 @@ namespace Banco_2Septiembre.Servicios {
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public static bool CheckPermissions(User user) {
-            if(user.permission==1) {
+        public bool CheckPermissions(User user) {
+            if(user.Permission == 1) {
                 return true;
-            } else if(user.permission == 0) {
+            } else if(user.Permission == 0) {
                 return false;
             } else {
                 return false; // Hacer excepcion de user no valido en su lugar
-            }          
+            }
         }
+
+        #endregion
     }
 }

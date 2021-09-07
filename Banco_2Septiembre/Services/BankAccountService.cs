@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Banco_2Septiembre.Servicios {
     class BankAccountService {
+        #region "Metodos"
         /// <summary>
         /// Reduce el saldo de la cuenta
         /// </summary>
@@ -23,5 +24,6 @@ namespace Banco_2Septiembre.Servicios {
             BA.Balance += quantity;
             return BA.Balance;
         }
+        #endregion
     }
 }
