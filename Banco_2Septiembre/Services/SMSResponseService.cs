@@ -1,8 +1,6 @@
 ﻿using Banco_2Septiembre.Interfaces;
 using Banco_2Septiembre.Modelo;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Banco_2Septiembre.Services {
     class SMSResponseService : ISendable {
@@ -20,7 +18,6 @@ namespace Banco_2Septiembre.Services {
             Console.WriteLine("El usuario con el número de cuenta: {0} tien un saldo de: {1}", bankAccount1.IBAN, bankAccount1.Balance);
             Console.WriteLine("El usuario con el número de cuenta: {0} tien un saldo de: {1}", bankAccount2.IBAN, bankAccount2.Balance);
         }
-
         public string GetMessage() {
             return "Se ha realizado la transferencia correctamente.";
         }

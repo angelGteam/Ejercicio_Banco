@@ -1,10 +1,7 @@
 ﻿using Banco_2Septiembre.Interfaces;
-using Banco_2Septiembre.Modelo;
 using Banco_2Septiembre.Services;
 using Banco_Ejercicio.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Banco_2Septiembre.Servicios {
     class ClientService : User, Iuserable {
@@ -45,7 +42,6 @@ namespace Banco_2Septiembre.Servicios {
                 return false; // Hacer excepcion de user no valido en su lugar
             }
         }
-
         #endregion
     }
 }

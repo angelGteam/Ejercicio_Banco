@@ -1,8 +1,6 @@
 ﻿using Banco_2Septiembre.Interfaces;
 using Banco_2Septiembre.Modelo;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Banco_2Septiembre.Services {
     class EmailResponseService : ISendable {
